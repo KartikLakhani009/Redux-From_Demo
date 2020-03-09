@@ -7,7 +7,7 @@ class Hello extends Component {
     return (
       <View style={styles.container}>
         <Text>Hello</Text>
-        <SimpleForm />
+        <SimpleForm {...this.props} />
       </View>
     );
   }

@@ -1,18 +1,12 @@
 import React, {Component} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {Field, reduxForm} from 'redux-form';
 import myField from './myField';
 import {connect} from 'react-redux';
 
 const initialvalues = {
-  FName: 'dfjvgf',
-  PhNo: '5454515',
+  FName: 'Avan',
+  PhNo: '4512631',
 };
 
 const validate = values => {
@@ -32,6 +26,10 @@ const validate = values => {
 
   if (fname == '') {
     errors.FName = 'Please Fill The Values for First Name';
+  }
+
+  if (ph == '') {
+    errors.PhNo = 'Please Fill The Values for First Name';
   }
   //   else if (values.FName.length > 8) {
   //     errors.FName = 'Too short';
@@ -55,7 +53,11 @@ class SimpleForm extends Component {
 
   myAction = values => {
     console.log('values', values);
-    alert('This is pure demo purpose : ');
+    // console.log('this props navigatio n :   ', this.props.navigation);
+    // if (values.FNamev != '' && !values.PhNo != '') {
+    // this.props.navigation.navigate('WelcomeHello');
+    // }
+    // alert('This is pure demo purpose : ');
   };
 
   render() {
@@ -94,6 +96,9 @@ const withForm = reduxForm({
   form: 'Simple',
   // enableReinitialize: true,
   validate,
+  onSubmitSuccess: (result, dispatch, props) => {
+    return props.navigation.navigate('WelcomeHello');
+  },
   initialValues: initialvalues,
 });
 
